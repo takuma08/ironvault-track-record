@@ -2,8 +2,9 @@
 
 Automated performance record for **IronVault Algo System v3.7**.
 
-This repository is updated automatically by the live system. Nothing here is
-written or edited by hand.
+The record files in this repository are written automatically by the live
+system. No trade or signal record is created or edited by hand. This README is
+maintained by hand; changes to it are in the commit history like everything else.
 
 ---
 
@@ -29,9 +30,9 @@ in a disclaimer.
 
 | File | Contents |
 |---|---|
-| `signals.csv` | Every signal at detection time: timestamp, symbol, side, entry, SL, TP |
-| `trades.csv` | Every closed trade: entry/exit price, result, P/L % |
-| `performance.json` | Running balance, trade count, win rate, peak |
+| `signals.csv` | Every signal at detection time: timestamp, symbol, side, entry, SL, TP, config version |
+| `trades.csv` | Every closed trade: entry/exit price, result, P/L %, config version |
+| `performance.json` | Running balance, trade count, win rate, peak, per-config breakdown |
 
 ## What is published
 
@@ -40,11 +41,13 @@ in a disclaimer.
 - Entry price, stop loss, take profit
 - Exit price, exit reason, P/L %
 - Account balance and summary statistics
+- The configuration version in effect when each record was generated
 
 ## What is not published
 
-- Strategy logic and indicator formulas
-- Internal strategy labels and parameters
+- Strategy logic
+- Indicator parameters and thresholds
+- Internal strategy labels
 - Backtest data and research code
 
 The system runs 19 strategies selected from 2,500+ backtested variants. The
@@ -57,6 +60,38 @@ selection process is not public; the results are.
 - No cherry-picking, no retroactive edits
 - If a record ever needs correction, the correction is a new commit — the
   original stays in history
+
+## Configuration changes
+
+The system's configuration is not frozen. When it changes, it is recorded here,
+including changes to what this repository publishes.
+
+Records generated under different configurations are not directly comparable.
+The `config_version` field in `signals.csv` and `trades.csv` marks which
+configuration produced each record.
+
+### 2026-08-04 (UTC) — record format and disclosure policy
+
+**Record format.** Added a `config_version` column to `signals.csv` and
+`trades.csv`, and `config_version` / `by_config` fields to `performance.json`.
+All existing records are labelled `v3.7.0`.
+
+This is a column addition, not a rewrite of values. Every previously published
+number is unchanged. Because the files are regenerated in full on each update,
+the commit for this change shows a diff on every row; that diff is the new
+column only.
+
+**Disclosure policy.** The "What is not published" list previously read
+"Strategy logic and indicator formulas". It now reads "Strategy logic" and
+"Indicator parameters and thresholds" as separate items.
+
+This was narrowed deliberately, so that the configuration change recorded below
+can be described concretely rather than in vague terms. Naming which indicators
+changed does not reveal the strategy set. Their periods, spans and thresholds
+remain unpublished.
+
+Changing what we disclose is itself disclosed. It is recorded here rather than
+made silently.
 
 ---
 
