@@ -70,6 +70,25 @@ Records generated under different configurations are not directly comparable.
 The `config_version` field in `signals.csv` and `trades.csv` marks which
 configuration produced each record.
 
+### 2026-08-05 (UTC) — v3.7.0 → v3.7.1
+
+**What changed.** The smoothing method for three indicators (ATR, RSI, ADX) was
+changed from a rolling mean to an exponentially weighted moving average.
+
+**Why.** The live system and the system used to validate the strategy selection
+had different implementations of these three indicators. The live system was
+therefore running under conditions that had never been validated. This change
+aligns the live system with the validated one. It was found during an internal
+audit, not reported from outside.
+
+**Effect.** Signals generated before and after this timestamp come from
+different conditions and are not directly comparable. Records from before the
+change are labelled `v3.7.0` and are left exactly as they were; records from
+after are labelled `v3.7.1`.
+
+A trade is labelled by the configuration in effect when it was **entered**, not
+when it closed.
+
 ### 2026-08-04 (UTC) — record format and disclosure policy
 
 **Record format.** Added a `config_version` column to `signals.csv` and
