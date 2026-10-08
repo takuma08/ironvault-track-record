@@ -1,14 +1,14 @@
 {
-  "updated_at_utc": "2026-10-08 03:10:01",
+  "updated_at_utc": "2026-10-08 07:10:01",
   "account_type": "demo (simulated)",
   "starting_balance": 5000.0,
-  "current_balance": 6021.88,
+  "current_balance": 5956.05,
   "peak_balance": 6330.77,
-  "total_return_pct": 20.44,
-  "closed_trades": 43,
+  "total_return_pct": 19.12,
+  "closed_trades": 44,
   "wins": 22,
-  "losses": 21,
-  "win_rate_pct": 51.2,
+  "losses": 22,
+  "win_rate_pct": 50.0,
   "risk_per_trade_pct": 0.9,
   "system_version": "v3.7",
   "config_version": "v3.7.1",
@@ -23,12 +23,12 @@
       "return_pct": -0.15
     },
     "v3.7.1": {
-      "closed_trades": 40,
+      "closed_trades": 41,
       "wins": 21,
-      "losses": 19,
+      "losses": 20,
       "balance_start": 4992.46,
-      "balance_end": 6022.55,
-      "return_pct": 20.63
+      "balance_end": 5956.69,
+      "return_pct": 19.31
     }
   }
 }
